@@ -6,12 +6,21 @@ import 'package:flutter_shop_app/widgets/product_item_widget.dart';
 import 'package:flutter_shop_app/models/product_model.dart';
 
 class ProductGridsWidget extends StatelessWidget {
-  const ProductGridsWidget({super.key});
+  const ProductGridsWidget({
+    super.key,
+    required this.showOnlyFavorites,
+  });
+  final bool showOnlyFavorites;
 
   @override
   Widget build(BuildContext context) {
     final productsProvider = Provider.of<ProductsProvider>(context);
-    final List<ProductModel> toDisplayProducts = productsProvider.getProducts;
+    final List<ProductModel> toDisplayProducts;
+    if (showOnlyFavorites) {
+      toDisplayProducts = productsProvider.getFavoriteProducts;
+    } else {
+      toDisplayProducts = productsProvider.getProducts;
+    }
 
     return GridView.builder(
       padding: const EdgeInsets.all(10),
