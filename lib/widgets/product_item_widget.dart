@@ -23,7 +23,7 @@ class ProductItemWidget extends StatelessWidget {
               icon: Icon(
                 product.isFavorite ? Icons.favorite : Icons.favorite_border,
               ),
-              color: Theme.of(context).secondaryHeaderColor,
+              color: Theme.of(context).primaryColorLight,
               onPressed: () {
                 product.toggleFavorite();
               },
@@ -33,9 +33,23 @@ class ProductItemWidget extends StatelessWidget {
           ),
           trailing: IconButton(
             icon: const Icon(Icons.shopping_cart),
-            color: Theme.of(context).secondaryHeaderColor,
+            color: Theme.of(context).primaryColorLight,
             onPressed: () {
               cartProvider.addItem(product.id, product.title, product.price);
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: const Text(
+                    'Item added!',
+                  ),
+                  duration: const Duration(seconds: 2),
+                  action: SnackBarAction(
+                      label: 'UNDO',
+                      onPressed: () {
+                        cartProvider.removeSingleItem(product.id);
+                      }),
+                ),
+              );
             },
           ),
           backgroundColor: Colors.black87,
