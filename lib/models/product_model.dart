@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ProductModel with ChangeNotifier {
-  final int id;
-  final String title;
-  final String description;
-  final double price;
-  final String imageUrl;
+  int id;
+  String title;
+  String description;
+  double price;
+  String imageUrl;
   bool isFavorite = false;
 
   ProductModel(
@@ -19,4 +19,24 @@ class ProductModel with ChangeNotifier {
     isFavorite = !isFavorite;
     notifyListeners();
   }
+
+  get getId => id;
+
+  set setId(id) => this.id = id;
+
+  get getTitle => title;
+
+  set setTitle(title) => this.title = title;
+
+  get getDescription => description;
+
+  set setDescription(description) => this.description = description;
+
+  get getPrice => price;
+
+  set setPrice(price) => this.price = price;
+
+  get getImageUrl => imageUrl;
+
+  set setImageUrl(imageUrl) => this.imageUrl = imageUrl;
 }

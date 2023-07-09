@@ -19,7 +19,7 @@ class ProductGridsWidget extends StatelessWidget {
     if (showOnlyFavorites) {
       toDisplayProducts = productsProvider.getFavoriteProducts;
     } else {
-      toDisplayProducts = productsProvider.getProducts;
+      toDisplayProducts = productsProvider.products;
     }
 
     return GridView.builder(

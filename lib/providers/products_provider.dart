@@ -47,7 +47,7 @@ class ProductsProvider with ChangeNotifier {
     return _currentMaxId;
   }
 
-  List<ProductModel> get getProducts {
+  List<ProductModel> get products {
     return [..._products];
   }
 
